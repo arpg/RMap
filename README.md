@@ -1,6 +1,6 @@
 # RMap: Millimter-Wave Radar Mapping Through Volumetric Upsampling
 RMap (RadarMapping), a method to generate highprecision 3D maps using radar point clouds extracted from an mmWave sensor. 
-![](./Paper/Overview.png =x250)
+![<img src="./Paper/Overview.png height="250">](./Paper/Overview.png)
 
 We present an end-to-end pipeline for generating the 3D maps from radar point clouds and demonstrate how these maps can be leveraged to construct a 3D map resembling lidar-based maps through UpPoinTr.
 ![System Diagram](Paper/SystemDiagram.png)
