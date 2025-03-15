@@ -1,7 +1,7 @@
 # RMap: Millimter-Wave Radar Mapping Through Volumetric Upsampling
-[[arXiv]](https://arxiv.org/pdf/2310.13188.pdf) [[Video]](https://ajaymopidevi.github.io/ajay/projects/2_project/)
+[[IROS Paper]](https://ieeexplore.ieee.org/abstract/document/10801827) [[Website]](https://arpg.github.io/rmap/) [[Video]](https://arpg.github.io/video/rmap/rmap_iros_submisson_video.mp4)
 
-RMap (RadarMapping), a method to generate highprecision 3D maps using radar point clouds extracted from an mmWave sensor. 
+RMap (Radar Mapping), a method to generate highprecision 3D maps using radar point clouds extracted from an mmWave sensor. 
 
 We present an end-to-end pipeline for generating the 3D maps from radar point clouds and demonstrate how these maps can be leveraged to construct a 3D map resembling lidar-based maps through UpPoinTr.
 ![System Diagram](Paper/SystemDiagram.png)
@@ -41,10 +41,14 @@ Through this crosssection analysis, we see that the original radar map consists 
 ## Citation
 If you find our work useful in your research, please consider citing: 
 ```
-@article{mopidevi2023rmap,
-  title={RMap: Millimeter-Wave Radar Mapping Through Volumetric Upsampling},
+@INPROCEEDINGS{10801827,
   author={Mopidevi, Ajay Narasimha and Harlow, Kyle and Heckman, Christoffer},
-  journal={arXiv preprint arXiv:2310.13188},
-  year={2023}
-}
+  booktitle={2024 IEEE/RSJ International Conference on Intelligent Robots and Systems (IROS)}, 
+  title={RMap: Millimeter-Wave Radar Mapping Through Volumetric Upsampling}, 
+  year={2024},
+  volume={},
+  number={},
+  pages={1108-1115},
+  keywords={Laser radar;Three-dimensional displays;Simultaneous localization and mapping;Spaceborne radar;Radar;Millimeter wave radar;Transformers;Real-time systems;Trajectory;Odometry},
+  doi={10.1109/IROS58592.2024.10801827}}
 ```
