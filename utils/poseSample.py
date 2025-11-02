@@ -43,21 +43,8 @@ def geodesic_growth(lidar_pcd, radar_pcd, seed_point, num_points, ratio):
     lidar_patches = []
     radar_patches = []
     
-    anchor_pts = get_anchor_points(lidar_pcd, seed_point, num_points*4)
+    anchor_pts = get_anchor_points(radar_pcd, seed_point, num_points)
     for pt in anchor_pts:
-        points = np.array(lidar_pcd.points)
-        points_2d = points[:,:2]
-        kdtree = KDTree(points_2d)
-        [k, idx] = kdtree.query(pt, num_points)
-        lidar_patch_points = np.asarray(points)[idx, :]
-        lidar_patch_pcd = o3d.geometry.PointCloud()
-        lidar_patch_pcd.points = o3d.utility.Vector3dVector(lidar_patch_points)
-        if len(lidar_patches) >0:
-            index, d = minDistance(lidar_patches, lidar_patch_pcd)
-            if(d<250):
-                continue
-        lidar_patches.append(lidar_patch_pcd)
-
         points = np.array(radar_pcd.points)
         points_2d = points[:,:2]
         kdtree = KDTree(points_2d)
@@ -65,7 +52,22 @@ def geodesic_growth(lidar_pcd, radar_pcd, seed_point, num_points, ratio):
         radar_patch_points = np.asarray(points)[idx, :]
         radar_patch_pcd = o3d.geometry.PointCloud()
         radar_patch_pcd.points = o3d.utility.Vector3dVector(radar_patch_points)
+        if len(radar_patches) >0:
+            index, d = minDistance(radar_patches, radar_patch_pcd)
+            if(d<250):
+                continue
+        
         radar_patches.append(radar_patch_pcd)
+        
+        points = np.array(lidar_pcd.points)
+        points_2d = points[:,:2]
+        kdtree = KDTree(points_2d)
+        [k, idx] = kdtree.query(pt, num_points)
+        lidar_patch_points = np.asarray(points)[idx, :]
+        lidar_patch_pcd = o3d.geometry.PointCloud()
+        lidar_patch_pcd.points = o3d.utility.Vector3dVector(lidar_patch_points)
+        lidar_patches.append(lidar_patch_pcd)
+
         
 
     return lidar_patches, radar_patches
@@ -137,7 +139,7 @@ if __name__ == "__main__":
         prev_patches = None    
         print(f, lidar_filename)
         seed_points = get_seed_points(lidar_filename)
-        radar_pcd.points = o3d.utility.Vector3dVector(radar_pcd,lidar_pcd)
+        # radar_pcd.points = o3d.utility.Vector3dVector(radar_pcd,lidar_pcd)
         idx = 0
         for i in range(seed_points.shape[0]):
             lidar, radar = geodesic_growth(lidar_pcd, radar_pcd, seed_points[i], num_points, ratio)
