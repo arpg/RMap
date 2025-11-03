@@ -33,7 +33,7 @@ This saves the final combined map for scene and also outputs the CD-L1 and CD-L2
     ```
 5. Generate scores to compare with lidar maps
     ```
-    python generateScore.py
+    python generateScores.py
     ```
 
 ### For generating radar maps on a new dataset:
