@@ -15,11 +15,26 @@ We present an end-to-end pipeline for generating the 3D maps from radar point cl
 3. Train/Test the UpPoinTr network with the generated input (and gt) patches. More details are available in <a href="[./UpPoinTr](https://github.com/ajaymopidevi/UpPoinTr)">UpPoinTr</a> repo.
 4. Combine the UpPoinTr predicted patches by
     ```
-    python combinescenePCD.py --pcd_dir ./data/ply --pred_dir <PREDICTED_PATCHES_DIR>
+    python combinescenePCD.py
     ```
 This saves the final combined map for scene and also outputs the CD-L1 and CD-L2 metrics
 
-
+### Pretrained Model and Data
+1. Download AdaPoinTr pretrained weights: <a href = "https://drive.google.com/drive/folders/1ClTBiiSjXi-Xtuk7QJnS9p5R90vBnZoH?usp=sharing">GDrive</a>
+2. Download ColoRadar data from <a href = "https://drive.google.com/drive/folders/15oWJZhAGHDBx9m_h7VacBsEcLbn288Ig?usp=sharing">GDrive</a> and upload in UpoinTr/data/ColoRadar/
+3. Run inference
+    ```
+    cd UpoinTr
+    python tools/inference.py cfgs/ColoRadar_models/AdaPoinTr.yaml ckpt_best.pth --pc_root data/ColoRadar/test --out_pc_root output/AdaPoinTr_FPSRadarLarge/ 
+    ```
+4. Generate combined maps
+    ```
+    python combineScenePCD.py
+    ```
+5. Generate scores to compare with lidar maps
+    ```
+    python generateScore.py
+    ```
 
 ### For generating radar maps on a new dataset:
 1. Install <a href="https://github.com/1988kramer/octomap/tree/feature/intensity_map">octomap</a>

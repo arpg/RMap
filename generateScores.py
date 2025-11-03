@@ -11,8 +11,8 @@ from UpPoinTr.extensions.chamfer_dist import ChamferDistanceL1, ChamferDistanceL
 import torch
 
 gt_dir = "UpPoinTr/data/CooloRadar/gt"
-pcd_dir = "output/AdaPoinTr_FPSRadarLarge/"
-maps_dir = "gt_maps"
+pcd_dir = "UpPoinTr/output/AdaPoinTr_FPSRadarLarge/"
+maps_dir = "UpPoinTr/data/CooloRadar/maps/"
 scene_names = [
                 "arpg_lab_run0_", "arpg_lab_run1_",
                 "aspen_run0_", "aspen_run1_", "aspen_run2_", "aspen_run3_", "aspen_run4_", "aspen_run5_",
