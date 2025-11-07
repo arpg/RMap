@@ -137,7 +137,6 @@ if __name__ == "__main__":
         prev_patches = None    
         print(f, lidar_filename)
         seed_points = get_seed_points(lidar_filename)
-        radar_pcd.points = o3d.utility.Vector3dVector(radar_pcd,lidar_pcd)
         idx = 0
         for i in range(seed_points.shape[0]):
             lidar, radar = geodesic_growth(lidar_pcd, radar_pcd, seed_points[i], num_points, ratio)
