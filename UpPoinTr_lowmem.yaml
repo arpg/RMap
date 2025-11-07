@@ -13,7 +13,7 @@ scheduler: {
   lowest_decay: 0.02  # min lr = lowest_decay * lr
 }}
 
- bnmscheduler: {
+bnmscheduler: {
   type: Lambda,
   kwargs: {
   decay_step: 21,
